@@ -1,0 +1,21 @@
+{
+  "name": "koa2-remote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/load-remote.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "push": "nrm use npm && npm version patch && npm publish && nrm use taobao",
+    "babel": "babel src -d  lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laomu1988/koa2-remote.git",
+    "babel": "babel src -d  lib"
+  },
+  "bugs": {
+    "url": "https://github.com/laomu1988/koa2-remote/issues"
+  },
+  "author": "laomu1988@qq.com",
+  "license": "MIT"
+}
