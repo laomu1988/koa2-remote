@@ -22,24 +22,20 @@ function handleHeader(header) {
   return header;
 }
 
-
 module.exports = function (config) {
   return function (ctx, next) {
     var req = ctx.request, res = ctx.response;
-    if (res.body || res.status || ctx.remote === false) return next();
-
-
+    if (res.body || (res.status && res.status != 404) || ctx.remote === false) return next();
     var uri = req.url.indexOf('http') === 0 ? req.url : req.protocol + '://' + req.host + req.url;
-
     req.header['accept-encoding'] = 'deflate'; // 避免gzip压缩
     // ctx.request.header['connection'] = 'close'; // 取消keep-alive
     // ctx.request.header['proxy-connection'] = 'close'; // 代理
 
     // 添加from标签,避免从本地重复请求
-    if (req.header['__from'] == 'koa2-proxy') {
+    if (req.header['__from'] == 'koa2-remote') {
       return next();
     }
-    req.header['__from'] = 'koa2-proxy';
+    req.header['__from'] = 'koa2-remote';
     var reqdata = {
       uri: uri,
       method: ctx.method,
@@ -49,7 +45,6 @@ module.exports = function (config) {
     if (ctx.request.body) {
       reqdata.form = ctx.request.body;
     }
-
     return new Promise(function (resolve, reject) {
       request(reqdata, function (err, response, body) {
         try {
@@ -71,4 +66,4 @@ module.exports = function (config) {
       });
     });
   };
-}
+};

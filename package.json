@@ -4,8 +4,8 @@
   "description": "",
   "main": "lib/load-remote.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "push": "nrm use npm && npm version patch && npm publish && nrm use taobao",
+    "test": "node test/remote.test.js",
+    "push": "babel src -d lib && nrm use npm && npm version patch && npm publish && nrm use taobao",
     "babel": "babel src -d  lib"
   },
   "repository": {
@@ -17,5 +17,11 @@
     "url": "https://github.com/laomu1988/koa2-remote/issues"
   },
   "author": "laomu1988@qq.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "koa": "^2.0.0-alpha.7"
+  },
+  "dependencies": {
+    "request": "^2.79.0"
+  }
 }
