@@ -14,6 +14,6 @@ app.use(function (ctx, next) {
 app.use(remote());
 
 
-app.listen(3000, function (err) {
-  err && console.log(err) || console.log('start server at http://localhost:3000/index.html');
+app.listen(3010, function (err) {
+  err && console.log(err) || console.log('start server at http://localhost:3010/index.html');
 });

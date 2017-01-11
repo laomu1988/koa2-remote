@@ -41,5 +41,6 @@ app.listen(3000, function (err) {
 
 ## todo: 
 * [x] url中是否包含端口: header的host包含端口,hostname不包含端口
+* [x] response是否包含status: statusCode
 * [ ] 向某一个地址转发请求但是host保持原样(不修改header中的host)
 * [ ] gzip压缩与解压
