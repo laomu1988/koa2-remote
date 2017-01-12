@@ -1,7 +1,7 @@
 {
   "name": "koa2-remote",
   "version": "1.0.2",
-  "description": "",
+  "description": "load data from remote url.",
   "main": "lib/load-remote.js",
   "scripts": {
     "test": "node test/remote.test.js",
