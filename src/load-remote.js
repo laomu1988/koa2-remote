@@ -4,6 +4,7 @@
  **/
 var request = require('request');
 var fs = require('fs');
+var _ = require('lodash');
 
 function handleHeader(header) {
   if (!header) {
@@ -26,7 +27,16 @@ module.exports = function (config) {
   return function (ctx, next) {
     var req = ctx.request, res = ctx.response;
     if (res.body || (res.status && res.status != 404) || ctx.remote === false) return next();
-    var uri = req.url.indexOf('http') === 0 ? req.url : req.protocol + '://' + req.host + req.url;
+    var uri = '';
+    if ((typeof ctx.remote === 'string') && ctx.remote) {
+      uri = ctx.remote;
+    } else if (ctx.remote && _.isPlainObject(ctx.remote)) {
+      uri = (ctx.remote.protocol || req.protocol) + '://' + (ctx.remote.host || req.host) + (ctx.remote.url || req.url);
+    }
+    else {
+      uri = req.url.indexOf('http') === 0 ? req.url : req.protocol + '://' + req.host + req.url;
+    }
+
     req.header['accept-encoding'] = 'deflate'; // 避免gzip压缩
     // ctx.request.header['connection'] = 'close'; // 取消keep-alive
     // ctx.request.header['proxy-connection'] = 'close'; // 代理
