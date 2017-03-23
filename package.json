@@ -8,6 +8,7 @@
     "push": "babel src -d lib && nrm use npm && npm version patch && npm publish && nrm use taobao",
     "build": "babel src -d  lib"
   },
+  "keywords": ["koa", "remote","load", "proxy"],
   "repository": {
     "type": "git",
     "url": "https://github.com/laomu1988/koa2-remote.git",
@@ -18,11 +19,9 @@
   },
   "author": "laomu1988@qq.com",
   "license": "MIT",
-  "devDependencies": {
-    "koa": "^2.0.0-alpha.7"
-  },
-  "dependencies": {
-    "lodash": "^4.17.4",
-    "request": "^2.79.0"
+  "peerDependencies": {
+    "koa": "^2.0.0-alpha.7",
+    "request": "^2.79.0",
+    "lodash": "^4.17.4"
   }
 }

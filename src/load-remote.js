@@ -14,8 +14,7 @@ function handleHeader(header) {
     var trim = attr.trim();
     if (trim.toLowerCase() == 'content-length') {
       delete header[attr];
-    }
-    else if (trim != attr) {
+    } else if (trim != attr) {
       header[trim] = header[attr];
       delete header[attr];
     }
@@ -32,8 +31,7 @@ module.exports = function (config) {
       uri = ctx.remote;
     } else if (ctx.remote && _.isPlainObject(ctx.remote)) {
       uri = (ctx.remote.protocol || req.protocol) + '://' + (ctx.remote.host || req.host) + (ctx.remote.url || req.url);
-    }
-    else {
+    } else {
       uri = req.url.indexOf('http') === 0 ? req.url : req.protocol + '://' + req.host + req.url;
     }
 
@@ -61,7 +59,7 @@ module.exports = function (config) {
           delete req.header.__koa2_remote; // 删除增加的header标记
           if (err) {
             res.status = 500;
-            res.body = '**** got error when load from remote url: ' + url + ' ****<br>' + JSON.stringify(err);
+            res.body = '**** got error when load from remote url: ' + uri + ' ****<br>' + JSON.stringify(err);
           } else {
             res.status = response.statusCode;
             var header = handleHeader(response.headers);
@@ -72,7 +70,7 @@ module.exports = function (config) {
           }
         } catch (err) {
           res.status = 504;
-          res.body = '**** got error when set data to response(url: ' + url + ') ****<br>' + JSON.stringify(err);
+          res.body = '**** got error when set data to response(url: ' + uri + ') ****<br>' + JSON.stringify(err);
         }
         resolve(next());
       });
