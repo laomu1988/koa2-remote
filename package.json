@@ -1,6 +1,6 @@
 {
   "name": "koa2-remote",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "load data from remote url.",
   "main": "lib/load-remote.js",
   "scripts": {
@@ -8,7 +8,12 @@
     "push": "babel src -d lib && nrm use npm && npm version patch && npm publish && nrm use taobao",
     "build": "babel src -d  lib"
   },
-  "keywords": ["koa", "remote","load", "proxy"],
+  "keywords": [
+    "koa",
+    "remote",
+    "load",
+    "proxy"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/laomu1988/koa2-remote.git",
