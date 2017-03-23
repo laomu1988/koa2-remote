@@ -5,7 +5,7 @@
   "main": "lib/load-remote.js",
   "scripts": {
     "test": "node test/remote.test.js",
-    "push": "babel src -d lib && nrm use npm && npm version patch && npm publish && nrm use taobao",
+    "push": "babel src -d lib && nrm use npm && npm version patch && npm publish",
     "build": "babel src -d  lib"
   },
   "keywords": [
